@@ -26,18 +26,18 @@ class _PostPageState extends State<PostPage> {
     super.initState();
     _getToken();
     _captionController.text = widget.postData['caption'] ?? "";
-
   }
+
+  //Get Token
   Future<void> _getToken() async{
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');
     if(token != null){
       _token = token;
     }
-
   }
 
-  // Fungsi untuk update caption
+  //Update Caption
   Future<void> _updatePost() async {
     print(_token);
     String newCaption = _captionController.text;
@@ -51,7 +51,7 @@ class _PostPageState extends State<PostPage> {
     }
   }
 
-  // Fungsi untuk menghapus postingan
+  // Delete Post
   Future<void> _deletePost() async {
     try {
       await ApiService.deletePost(_token, widget.postData['id'].toString());
@@ -61,7 +61,7 @@ class _PostPageState extends State<PostPage> {
     }
   }
 
-  // Dialog konfirmasi hapus postingan
+  // Confirmation Delete Dialog
   void _showDeleteDialog() {
     showDialog(
       context: context,
@@ -85,7 +85,7 @@ class _PostPageState extends State<PostPage> {
     );
   }
 
-  // Dialog untuk edit caption
+  //Confirmation Edit Caption
   void _showEditDialog() {
     showDialog(
       context: context,

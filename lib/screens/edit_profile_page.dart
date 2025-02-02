@@ -8,14 +8,13 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  // final String token='';
   String? _username;
   String? _email;
   bool _isLoading = true;
+  String? token;
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _oldPasswordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  String? token;
 
 
   @override
@@ -30,7 +29,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     });
   }
 
-
+  // Get Current User Data
   Future<void> _fetchProfile() async {
     try {
       final profileData = await ApiService.getCurrentUser(token!);
@@ -49,6 +48,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
   }
 
+  //Update Profile
   Future<void> _editProfile() async {
     if (_usernameController.text.isEmpty) {
       return;
@@ -74,6 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     }
   }
 
+  //Change Password
   Future<void> _changePassword() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token');

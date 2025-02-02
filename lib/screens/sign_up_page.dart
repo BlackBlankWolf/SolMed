@@ -19,16 +19,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
 
     try {
+      //ApiService to Create New Account
       final response = await ApiService.registerUser(
         _emailController.text,
         _usernameController.text,
         _passwordController.text,
       );
 
-      // Tampilkan pesan sukses
+      // Makesure Register Success
       print('Register Success: ${response['data']['message']}');
 
-      // Arahkan pengguna ke halaman login
+      // Navigate to Login Screen
       Navigator.pushReplacementNamed(context, '/login');
     } catch (error) {
       // Tampilkan pesan error

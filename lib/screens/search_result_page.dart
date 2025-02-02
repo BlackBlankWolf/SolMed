@@ -21,7 +21,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
     _fetchPosts(widget.query);
   }
 
-  // Ambil postingan berdasarkan caption
+  //Search and Get Post From Caption
   Future<void> _fetchPosts(String query) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -41,7 +41,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
     }
   }
 
-  // Ambil data user sebelum pindah ke halaman UsersPostPage
+  // Navigate To Screen Post Page With Get User Detail First
   Future<void> _navigateToPostPage(Map<String, dynamic> post) async {
     try {
       setState(() => _isLoading = true);

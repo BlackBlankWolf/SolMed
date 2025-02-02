@@ -16,8 +16,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   bool _isLoading = false;
   File? _imageFile;
   String? _imageUrl; // Untuk Web
-  // String? _imageUrl;
 
+  // Choose Image
   Future<void> _pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     print(pickedFile?.path);
@@ -33,6 +33,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   }
 
+  //Create Post
   Future<void> _createPost() async {
     if (_captionController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(

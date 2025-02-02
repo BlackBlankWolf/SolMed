@@ -23,6 +23,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     _fetchUsersPost();
   }
 
+  //Get User Detail
   Future<void> _fetchUser() async {
     try {
       final users = await ApiService.getUserDetailById(widget.userId);
@@ -37,6 +38,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     }
   }
 
+  //Get All Post From User
   Future<void> _fetchUsersPost() async {
     try {
       final posts = await ApiService.getPostByUserId(widget.userId);

@@ -22,6 +22,7 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
   }
 
+  //Search and Get All User From Username
   void _searchUsers(String query) async {
     setState(() => _isUserLoading = true);
     try {
@@ -43,7 +44,7 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-//Timer
+  //Timer Refresh
   void _onSearchChanged(String query) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(Duration(milliseconds: 500), () {
@@ -57,6 +58,7 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
+  //Navigation To Screen Search Result
   void _navigateToSearchResults() {
     if (_searchController.text.isNotEmpty) {
       Navigator.push(

@@ -22,6 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _fetchProfile();
   }
 
+  //Get Data Current User
   Future<void> _fetchProfile() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -41,6 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  //Get All Post User
   Future<List<dynamic>> _fetchUserPosts(String userId) async {
     try {
       final posts = await ApiService.getPostByUserId(userId);
@@ -56,6 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  //Navigation Screen Edit Profile
   void _navigateToEditProfile() {
     // Navigasi ke halaman Edit Profile
     Navigator.pushNamed(context, '/editprofile').then((_) {

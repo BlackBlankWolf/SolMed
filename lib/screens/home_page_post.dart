@@ -26,6 +26,7 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  //Get Current User
   Future<void> _fetchCurrentUser() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -45,6 +46,7 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
+  //Get User From Post
   Future<void> _fetchUsers(String userId) async {
     try {
       if (_usernames.containsKey(userId)) return;
@@ -65,6 +67,7 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
+  //Get All Post
   Future<void> _fetchPosts() async {
     try {
       final postsData = await ApiService.getAllPosts();

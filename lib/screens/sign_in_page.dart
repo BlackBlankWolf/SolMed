@@ -19,18 +19,21 @@ class _LoginScreenState extends State<LoginScreen> {
       _isLoading = true;
     });
 
+    //
     try {
+      //Api Service to Get Data Token
       final response = await ApiService.loginUser(
         _emailController.text,
         _passwordController.text,
       );
 
+      //Save Token
       final token = response['data']['token'];
-      print('Login Success: $token'); // Pastikan token dicetak di log
-
+      print('Login Success: $token'); //Makesure Token
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', token); // Simpan token
+      await prefs.setString('token', token);
 
+      //Navigate to Screen Homepage
       Navigator.pushReplacementNamed(context, '/homepage');
     } catch (error) {
       print('Login Error: $error');
